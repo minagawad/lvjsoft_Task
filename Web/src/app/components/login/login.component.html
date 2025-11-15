@@ -1,0 +1,18 @@
+<mat-card>
+  <h2>Login</h2>
+  <form (ngSubmit)="submit()">
+    <mat-form-field appearance="outline" style="width:100%">
+      <mat-label>Username</mat-label>
+      <input matInput [(ngModel)]="userName" name="userName" #userNameModel="ngModel" required />
+      <mat-error *ngIf="userNameModel.invalid && userNameModel.touched">Username is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" style="width:100%">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" [(ngModel)]="password" name="password" #passwordModel="ngModel" required />
+      <mat-error *ngIf="passwordModel.invalid && passwordModel.touched">Password is required</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Login</button>
+    <div style="color:#c62828;margin-top:8px" *ngIf="error">{{ error }}</div>
+  </form>
+  <p>New user? <a routerLink="/register">Register</a></p>
+</mat-card>

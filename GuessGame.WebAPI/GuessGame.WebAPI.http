@@ -1,0 +1,39 @@
+@GuessGame.WebAPI_HostAddress = http://localhost:5048
+
+### Register
+POST {{GuessGame.WebAPI_HostAddress}}/api/auth/register
+Content-Type: application/json
+
+{
+  "userName": "testuser",
+  "password": "P@ssw0rd!"
+}
+
+### Login
+POST {{GuessGame.WebAPI_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "userName": "testuser",
+  "password": "P@ssw0rd!"
+}
+
+### Start Game
+POST {{GuessGame.WebAPI_HostAddress}}/api/game/start
+Authorization: Bearer {{token}}
+
+### Make Guess
+POST {{GuessGame.WebAPI_HostAddress}}/api/game/guess
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "guess": 21
+}
+
+### My Stats
+GET {{GuessGame.WebAPI_HostAddress}}/api/users/me
+Authorization: Bearer {{token}}
+
+### Leaderboard
+GET {{GuessGame.WebAPI_HostAddress}}/api/users/leaderboard?top=10

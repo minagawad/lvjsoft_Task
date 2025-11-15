@@ -1,0 +1,39 @@
+# d:\Practices\lvjsoft\lvjsoft_Task\docker-compose.yml
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: guessgame
+    ports:
+      - "5432:5432"
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: .
+      dockerfile: GuessGame.WebAPI/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__Default: Host=db;Port=5432;Database=guessgame;Username=postgres;Password=postgres
+      Jwt__Key: dev-secret-key-change-in-prod-1234567890
+      Jwt__Issuer: guessgame
+      Jwt__Audience: guessgame-client
+    depends_on:
+      - db
+    ports:
+      - "5048:5048"
+
+  web:
+    build:
+      context: ./Web
+      dockerfile: Dockerfile
+    depends_on:
+      - api
+    ports:
+      - "4200:80"
+
+volumes:
+  dbdata:

@@ -1,0 +1,5 @@
+:host { display: block; padding: 16px; }
+mat-card { max-width: 420px; margin: 24px auto; padding: 24px; }
+@media (max-width: 600px) {
+  mat-card { margin: 12px; padding: 16px; }
+}

@@ -1,0 +1,7 @@
+<mat-card>
+  <h2>Profile</h2>
+  <mat-list>
+    <mat-list-item *ngIf="best !== null">Best guess count: {{ best }}</mat-list-item>
+    <mat-list-item *ngIf="best === null">No stats yet.</mat-list-item>
+  </mat-list>
+</mat-card>

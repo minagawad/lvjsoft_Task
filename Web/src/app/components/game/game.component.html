@@ -1,0 +1,14 @@
+<mat-card>
+  <h2>Guess The Number (1–43)</h2>
+  <mat-form-field appearance="outline">
+    <mat-label>Your guess</mat-label>
+    <input matInput type="number" [(ngModel)]="guess" name="guess" min="1" max="43" />
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="submit()">Submit</button>
+  <div style="margin-top:12px;font-weight:600" *ngIf="feedback">
+    <span *ngIf="feedback === 'higher'">Try a higher number</span>
+    <span *ngIf="feedback === 'lower'">Try a lower number</span>
+    <span *ngIf="feedback === 'correct'">Correct! Guesses: {{ guessCount }}</span>
+  </div>
+  <div *ngIf="bestGuessCount !== null">Your best: {{ bestGuessCount }}</div>
+</mat-card>

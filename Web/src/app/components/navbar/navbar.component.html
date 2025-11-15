@@ -1,0 +1,9 @@
+<mat-toolbar color="primary">
+  <span>Guess Game</span>
+  <span style="flex:1 1 auto"></span>
+  <a mat-button routerLink="/game">Game</a>
+  <a mat-button routerLink="/leaderboard">Leaderboard</a>
+  <a mat-button routerLink="/profile">Profile</a>
+  <button mat-raised-button color="accent" *ngIf="auth.isAuthenticated$ | async" (click)="auth.logout()">Logout</button>
+  <a mat-stroked-button color="accent" *ngIf="!(auth.isAuthenticated$ | async)" routerLink="/login">Login</a>
+</mat-toolbar>
