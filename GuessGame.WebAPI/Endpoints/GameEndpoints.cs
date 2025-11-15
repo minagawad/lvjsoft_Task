@@ -1,10 +1,8 @@
 using FluentValidation;
 using GuessGame.Application.Game;
 using GuessGame.WebAPI.Common;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GuessGame.WebAPI.Endpoints;
 
