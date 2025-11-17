@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using GuessGame.WebAPI.Validators;
 using GuessGame.WebAPI.Endpoints;
+using Microsoft.EntityFrameworkCore;
 using MediatR;
 using FluentValidation;
 
@@ -77,11 +78,11 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Ensure database is created on startup (development convenience)
+// Apply EF Core migrations on startup
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<GuessGame.Infrastructure.Data.AppDbContext>();
-    db.Database.EnsureCreated();
+    db.Database.Migrate();
 }
 
 if (app.Environment.IsDevelopment())
